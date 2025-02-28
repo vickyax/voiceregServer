@@ -13,8 +13,8 @@ import soundfile as sf
 logging.basicConfig(level=logging.DEBUG)
 
 app = Flask(__name__)
-CORS(app)
 
+CORS(app, resources={r"/*": {"origins": "*"}})  # Temporary for initial setup
 # Configuration
 ALLOWED_EXTENSIONS = {'wav', 'mp3', 'm4a', 'flac', 'ogg'}
 SAMPLE_RATE = 16000  # Target sample rate
@@ -227,4 +227,4 @@ def health_check():
 
 if __name__ == '__main__':
     logging.info("Starting Flask server on port 5000...")
-    app.run()
+    app.run(debug=False)
