@@ -14,7 +14,7 @@ logging.basicConfig(level=logging.DEBUG)
 
 app = Flask(__name__)
 
-CORS(app, resources={r"/*": {"origins": ["http://localhost:5173", "https://recospeech-vickyaxo.netlify.app"]}})
+CORS(app, resources={r"/*": {"origins": "*"}})
 
 # Configuration
 ALLOWED_EXTENSIONS = {'wav', 'mp3', 'm4a', 'flac', 'ogg'}
@@ -104,7 +104,6 @@ def train_gmm(features, n_components=8):  # Reduced from 16 to 8
         return None
 
 @app.route('/register', methods=['POST'])
-
 def register_speaker():
     try:
         if 'name' not in request.form or 'audio' not in request.files:
