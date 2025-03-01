@@ -176,7 +176,7 @@ def recognize_speaker():
             return jsonify({'error': 'Unsupported file format'}), 400
 
         filename = secure_filename(f"recognize_{audio_file.filename}")
-        audio_path = os.path.join('server/uploads', filename)
+        audio_path = os.path.join('uploads', filename)
         audio_file.save(audio_path)
 
         logging.debug(f"Recognizing speaker from file: {audio_path}")
